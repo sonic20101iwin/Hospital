@@ -1,0 +1,176 @@
+<!-- ============ PAGE BANNER ============ -->
+<section class="page-banner">
+    <div class="container">
+        <div class="page-banner__inner">
+            <nav class="breadcrumb" aria-label="Breadcrumb">
+                <a href="index.html">Home</a>
+                <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+                <span aria-current="page">Contact</span>
+            </nav>
+            <h1>Contact Band-Aid Medical Center</h1>
+            <p>We are here to help with appointments, general enquiries and emergency guidance. Reach us by phone, email or in person.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="section">
+    <div class="container">
+        <div class="section-head section-head--center">
+            <span class="eyebrow"><i class="fa-solid fa-headset" aria-hidden="true"></i> Get in Touch</span>
+            <h2>How to Reach Us</h2>
+            <p>For medical emergencies, always call our 24/7 emergency hotline rather than using the appointment form.</p>
+        </div>
+        <div class="contact__grid">
+            <div class="contact__cards">
+                <article class="contact-card">
+                    <span class="contact-card__icon" aria-hidden="true"><i class="fa-solid fa-location-dot"></i></span>
+                    <div>
+                        <h3>Address</h3>
+                        <p>100 Medical Center Drive<br>New York, NY 10001</p>
+                    </div>
+                </article>
+                <article class="contact-card">
+                    <span class="contact-card__icon" aria-hidden="true"><i class="fa-solid fa-phone"></i></span>
+                    <div>
+                        <h3>Phone</h3>
+                        <p><a href="tel:+18005552273">+1 (800) 555-CARE</a></p>
+                    </div>
+                </article>
+                <article class="contact-card">
+                    <span class="contact-card__icon" aria-hidden="true"><i class="fa-solid fa-envelope"></i></span>
+                    <div>
+                        <h3>Email</h3>
+                        <p><a href="mailto:care@bandaidmedical.example">care@bandaidmedical.example</a></p>
+                    </div>
+                </article>
+                <article class="contact-card">
+                    <span class="contact-card__icon" aria-hidden="true"><i class="fa-solid fa-truck-medical"></i></span>
+                    <div>
+                        <h3>Emergency</h3>
+                        <p>24 Hours / 7 Days</p>
+                    </div>
+                </article>
+                <article class="contact-card">
+                    <span class="contact-card__icon" aria-hidden="true"><i class="fa-solid fa-clock"></i></span>
+                    <div>
+                        <h3>General Services</h3>
+                        <p>Monday &ndash; Friday<br>8:00 AM &ndash; 6:00 PM</p>
+                    </div>
+                </article>
+            </div>
+
+            <div class="map-placeholder" role="img" aria-label="Map placeholder showing the location of Band-Aid Medical Center at 100 Medical Center Drive, New York">
+                <span class="map-placeholder__road map-placeholder__road--h" aria-hidden="true"></span>
+                <span class="map-placeholder__road map-placeholder__road--v" aria-hidden="true"></span>
+                <div class="map-placeholder__pin">
+                    <span class="map-placeholder__dot" aria-hidden="true"><i class="fa-solid fa-location-dot"></i></span>
+                    <strong>Band-Aid Medical Center</strong>
+                    <span>100 Medical Center Drive, New York</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============ APPOINTMENT ============ -->
+<section class="section section--alt" id="appointment">
+    <div class="container">
+        <div class="appointment__grid">
+            <div class="appointment__info">
+                <span class="eyebrow"><i class="fa-regular fa-calendar-check" aria-hidden="true"></i> Appointments</span>
+                <h2>Request an Appointment</h2>
+                <p class="lead">Complete the form and our patient services team will contact you to confirm a convenient time with the right specialist.</p>
+                <ul class="appointment__list">
+                    <li>
+                        <i class="fa-solid fa-clock" aria-hidden="true"></i>
+                        <span><strong>Quick Response</strong><span>Requests are reviewed during service hours.</span></span>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-user-doctor" aria-hidden="true"></i>
+                        <span><strong>Right Specialist</strong><span>We match your request to the appropriate department.</span></span>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-shield-heart" aria-hidden="true"></i>
+                        <span><strong>Confidential</strong><span>Your details are handled with care and privacy.</span></span>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-truck-medical" aria-hidden="true"></i>
+                        <span><strong>Emergency?</strong><span>Call <a href="tel:+18005552273">+1 (800) 555-CARE</a> immediately.</span></span>
+                    </li>
+                </ul>
+            </div>
+
+            <form class="form-card" action="#" method="post" aria-label="Appointment request form">
+                <div class="form-row">
+                    <div class="field">
+                        <label for="c-name">Full Name <span class="req" aria-hidden="true">*</span></label>
+                        <input type="text" id="c-name" name="name" placeholder="e.g. Jordan Avery" autocomplete="name" required>
+                    </div>
+                    <div class="field">
+                        <label for="c-email">Email Address <span class="req" aria-hidden="true">*</span></label>
+                        <input type="email" id="c-email" name="email" placeholder="you@example.com" autocomplete="email" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="field">
+                        <label for="c-phone">Phone Number <span class="req" aria-hidden="true">*</span></label>
+                        <input type="tel" id="c-phone" name="phone" placeholder="+1 (555) 000-0000" autocomplete="tel" required>
+                    </div>
+                    <div class="field">
+                        <label for="c-date">Preferred Date <span class="req" aria-hidden="true">*</span></label>
+                        <input type="date" id="c-date" name="date" required>
+                    </div>
+                </div>
+                <div class="field">
+                    <label for="c-department">Department</label>
+                    <select id="c-department" name="department">
+                        <option value="">Select a department</option>
+                        <option>Emergency Medicine</option>
+                        <option>Cardiology</option>
+                        <option>Neurology</option>
+                        <option>Oncology</option>
+                        <option>Pediatrics</option>
+                        <option>Orthopedics</option>
+                        <option>General Surgery</option>
+                        <option>Internal Medicine</option>
+                        <option>Radiology</option>
+                        <option>Dermatology</option>
+                        <option>Obstetrics &amp; Gynecology</option>
+                        <option>Intensive Care</option>
+                        <option>Physical Therapy</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label for="c-message">Message</label>
+                    <textarea id="c-message" name="message" placeholder="Tell us briefly about the reason for your visit or any preferences."></textarea>
+                </div>
+                <button class="btn btn--primary btn--block" type="submit"><i class="fa-regular fa-paper-plane" aria-hidden="true"></i> Request Appointment</button>
+                <p class="form-note">This is a front-end demonstration form. No data is transmitted or stored.</p>
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- ============ EMERGENCY ============ -->
+<section class="emergency">
+    <div class="container">
+        <div class="emergency__inner">
+            <div>
+                <span class="eyebrow" style="background:rgba(255,255,255,.16);color:#fff"><i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i> Emergency Department</span>
+                <h2>When Every Second Matters.</h2>
+                <p>Our emergency department is staffed and equipped around the clock. If you or someone else is experiencing a medical emergency, contact us immediately.</p>
+                <div class="emergency__facts">
+                    <span class="emergency__fact"><i class="fa-solid fa-clock" aria-hidden="true"></i> 24/7 Availability</span>
+                    <span class="emergency__fact"><i class="fa-solid fa-truck-medical" aria-hidden="true"></i> Ambulance Response</span>
+                    <span class="emergency__fact"><i class="fa-solid fa-user-doctor" aria-hidden="true"></i> On-site Physicians</span>
+                </div>
+            </div>
+            <div class="emergency__card">
+                <span>Emergency Hotline</span>
+                <strong><a href="tel:+18005552273">+1 (800) 555-CARE</a></strong>
+                <a class="btn btn--white btn--block" href="tel:+18005552273"><i class="fa-solid fa-phone-volume" aria-hidden="true"></i> Emergency Assistance</a>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Admin Dashboard | Band-Aid Medical Center</title>
+<meta name="description" content="Front-end administration dashboard prototype for Band-Aid Medical Center — appointments, patients, crew, departments, facilities, services, gallery, testimonials, messages and settings.">
+<meta name="theme-color" content="#102a43">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='5' fill='%23c62828'/%3E%3Cpath d='M10 5h4v5h5v4h-5v5h-4v-5H5v-4h5z' fill='%23fff'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+<a class="skip-link" href="#admin-main" style="position:absolute;left:1rem;top:-100px;z-index:2000;background:#c62828;color:#fff;padding:.75rem 1.25rem;border-radius:8px">Skip to dashboard</a>
+
+<!-- CSS-only sidebar control (no JavaScript) -->
+<input type="checkbox" id="admin-nav" class="visually-hidden" aria-label="Toggle admin navigation">
+<label class="admin__backdrop" for="admin-nav" aria-hidden="true"></label>
+
+<div class="admin">
+    <!-- ============ SIDEBAR ============ -->
+    <aside class="admin__sidebar" aria-label="Admin navigation">
+        <div class="sidebar__brand">
+            <span class="sidebar__mark" aria-hidden="true">
+                <svg viewBox="0 0 24 24" focusable="false">
+                    <path d="M12 1.8 21 5v6.2c0 5.3-3.6 9.6-9 11-5.4-1.4-9-5.7-9-11V5z" fill="rgba(255,255,255,.18)"/>
+                    <path d="M11 7h2v3.5h3.5v2H13V16h-2v-3.5H7.5v-2H11z" fill="#fff"/>
+                </svg>
+            </span>
+            <span class="sidebar__brand-text">
+                <strong>Band-Aid Admin</strong>
+                <span>Medical Center</span>
+            </span>
+        </div>
+
+        <p class="sidebar__section">Overview</p>
+        <nav class="sidebar__nav" aria-label="Dashboard sections">
+            <a class="sidebar__link is-active" href="#dashboard" aria-current="page"><i class="fa-solid fa-gauge-high" aria-hidden="true"></i> Dashboard</a>
+            <a class="sidebar__link" href="#appointments"><i class="fa-regular fa-calendar-check" aria-hidden="true"></i> Appointments <span class="sidebar__badge sidebar__badge--red">24</span></a>
+            <a class="sidebar__link" href="#patients"><i class="fa-solid fa-hospital-user" aria-hidden="true"></i> Patients</a>
+            <a class="sidebar__link" href="#doctors"><i class="fa-solid fa-user-doctor" aria-hidden="true"></i> Doctors</a>
+            <a class="sidebar__link" href="#crew"><i class="fa-solid fa-user-nurse" aria-hidden="true"></i> Crew</a>
+        </nav>
+
+        <p class="sidebar__section">Hospital</p>
+        <nav class="sidebar__nav" aria-label="Hospital management sections">
+            <a class="sidebar__link" href="#departments"><i class="fa-solid fa-hospital" aria-hidden="true"></i> Departments</a>
+            <a class="sidebar__link" href="#facilities"><i class="fa-solid fa-building-shield" aria-hidden="true"></i> Facilities</a>
+            <a class="sidebar__link" href="#services"><i class="fa-solid fa-stethoscope" aria-hidden="true"></i> Services</a>
+            <a class="sidebar__link" href="#gallery"><i class="fa-solid fa-images" aria-hidden="true"></i> Gallery</a>
+            <a class="sidebar__link" href="#testimonials"><i class="fa-solid fa-quote-left" aria-hidden="true"></i> Testimonials</a>
+        </nav>
+
+        <p class="sidebar__section">System</p>
+        <nav class="sidebar__nav" aria-label="System sections">
+            <a class="sidebar__link" href="#messages"><i class="fa-solid fa-envelope" aria-hidden="true"></i> Messages <span class="sidebar__badge">6</span></a>
+            <a class="sidebar__link" href="#settings"><i class="fa-solid fa-gear" aria-hidden="true"></i> Settings</a>
+        </nav>
+
+        <div class="sidebar__footer">
+            <a class="sidebar__logout" href="index.html"><i class="fa-solid fa-arrow-right-from-bracket" aria-hidden="true"></i> Logout</a>
+        </div>
+    </aside>
+
+    <!-- ============ MAIN ============ -->
+    <div class="admin__main" id="admin-main">
+        <!-- ============ TOPBAR ============ -->
+        <header class="admin__topbar">
+            <div class="topbar__left">
+                <label class="sidebar-toggle" for="admin-nav" aria-label="Toggle sidebar navigation">
+                    <span></span><span></span><span></span>
+                </label>
+                <div class="topbar__titles">
+                    <h1>Dashboard Overview</h1>
+                    <p>Welcome back — here is what is happening at Band-Aid Medical Center today.</p>
+                </div>
+            </div>
+
+            <div class="topbar__search">
+                <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+                <label class="visually-hidden" for="admin-search">Search the dashboard</label>
+                <input type="search" id="admin-search" placeholder="Search patients, appointments, staff…">
+            </div>
+
+            <div class="topbar__actions">
+                <a class="icon-btn" href="#messages" aria-label="Notifications"><i class="fa-regular fa-bell" aria-hidden="true"></i></a>
+                <a class="icon-btn" href="index.html" aria-label="View public website"><i class="fa-solid fa-globe" aria-hidden="true"></i></a>
+                <div class="topbar__profile">
+                    <span class="topbar__avatar" aria-hidden="true">AR</span>
+                    <span class="topbar__profile-text">
+                        <strong>Dr. A. Reyes</strong>
+                        <span>Administrator</span>
+                    </span>
+                </div>
+            </div>
+        </header>
+
+        <div class="admin__content">
+            <!-- Prototype notice -->
+            <div class="prototype-note" role="note">
+                <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
+                <p><strong>Front-end prototype.</strong> This administrative dashboard is a visual demonstration built with HTML and CSS only. All figures and records are static sample data — no JavaScript, no backend and no live data are connected.</p>
+            </div>
+
+            <!-- ============ KPI CARDS ============ -->
+            <section id="dashboard" aria-label="Key performance indicators">
+                <h2 class="visually-hidden">Key statistics</h2>
+                <div class="kpi-grid">
+                    <article class="kpi">
+                        <div class="kpi__top">
+                            <span class="kpi__icon" aria-hidden="true"><i class="fa-regular fa-calendar-check"></i></span>
+                            <span class="kpi__trend kpi__trend--up"><i class="fa-solid fa-arrow-trend-up" aria-hidden="true"></i> 8%</span>
+                        </div>
+                        <div class="kpi__value">128</div>
+                        <div class="kpi__label">Today's Appointments</div>
+                    </article>
+                    <article class="kpi kpi--navy">
+                        <div class="kpi__top">
+                            <span class="kpi__icon" aria-hidden="true"><i class="fa-solid fa-hospital-user"></i></span>
+                            <span class="kpi__trend kpi__trend--up"><i class="fa-solid fa-arrow-trend-up" aria-hidden="true"></i> 3%</span>
+                        </div>
+                        <div class="kpi__value">12,480</div>
+                        <div class="kpi__label">Total Patients</div>
+                    </article>
+                    <article class="kpi kpi--navy">
+                        <div class="kpi__top">
+                            <span class="kpi__icon" aria-hidden="true"><i class="fa-solid fa-user-doctor"></i></span>
+                            <span class="kpi__trend kpi__trend--flat"><i class="fa-solid fa-minus" aria-hidden="true"></i> 0%</span>
+                        </div>
+                        <div class="kpi__value">156</div>
+                        <div class="kpi__label">Medical Crew</div>
+                    </article>
+                    <article class="kpi kpi--navy">
+                        <div class="kpi__top">
+                            <span class="kpi__icon" aria-hidden="true"><i class="fa-solid fa-hospital"></i></span>
+                            <span class="kpi__trend kpi__trend--flat"><i class="fa-solid fa-minus" aria-hidden="true"></i> 0%</span>
+                        </div>
+                        <div class="kpi__value">30</div>
+                        <div class="kpi__label">Departments</div>
+                    </article>
+                    <article class="kpi kpi--amber">
+                        <div class="kpi__top">
+                            <span class="kpi__icon" aria-hidden="true"><i class="fa-solid fa-hourglass-half"></i></span>
+                            <span class="kpi__trend kpi__trend--down"><i class="fa-solid fa-arrow-trend-down" aria-hidden="true"></i> 4%</span>
+                        </div>
+                        <div class="kpi__value">24</div>
+                        <div class="kpi__label">Pending Requests</div>
+                    </article>
+                    <article class="kpi kpi--green">
+                        <div class="kpi__top">
+                            <span class="kpi__icon" aria-hidden="true"><i class="fa-solid fa-truck-medical"></i></span>
+                            <span class="kpi__trend kpi__trend--up"><i class="fa-solid fa-arrow-trend-up" aria-hidden="true"></i> 2%</span>
+                        </div>
+                        <div class="kpi__value">18</div>
+                        <div class="kpi__label">Emergency Cases</div>
+                    </article>
+                </div>
+            </section>
+
+            <!-- ============ APPOINTMENTS + MESSAGES ============ -->
+            <div class="dash-grid">
+                <section class="panel" id="appointments" aria-labelledby="appointments-title">
+                    <div class="panel__head">
+                        <div>
+                            <h2 id="appointments-title">Recent Appointments</h2>
+                            <p>Today's scheduled and pending appointments</p>
+                        </div>
+                        <span class="pill pill--active"><i class="fa-solid fa-database" aria-hidden="true"></i> Sample data</span>
+                    </div>
+                    <div class="panel__body panel__body--flush table-wrap">
+                        <table class="data">
+                            <caption class="visually-hidden">Recent appointments at Band-Aid Medical Center</caption>
+                            <thead>
+                                <tr>
+                                    <th scope="col">Patient</th>
+                                    <th scope="col">Clinician</th>
+                                    <th scope="col">Department</th>
+                                    <th scope="col">Time</th>
+                                    <th scope="col">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span class="cell-person"><span class="cell-person__avatar" aria-hidden="true">SM</span><span><strong>Sarah Mitchell</strong><span>#PT-10241</span></span></span></td>
+                                    <td>Dr. A. Carter</td>
+                                    <td>Cardiology</td>
+                                    <td>09:30</td>
+                                    <td><span class="pill pill--confirmed"><i class="fa-solid fa-check" aria-hidden="true"></i> Confirmed</span></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="cell-person"><span class="cell-person__avatar" aria-hidden="true">JT</span><span><strong>James Turner</strong><span>#PT-10242</span></span></span></td>
+                                    <td>Dr. E. Novak</td>
+                                    <td>Pediatrics</td>
+                                    <td>10:15</td>
+                                    <td><span class="pill pill--confirmed"><i class="fa-solid fa-check" aria-hidden="true"></i> Confirmed</span></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="cell-person"><span class="cell-person__avatar" aria-hidden="true">PR</span><span><strong>Priya Raman</strong><span>#PT-10243</span></span></span></td>
+                                    <td>Dr. G. Bennett</td>
+                                    <td>Orthopedics</td>
+                                    <td>11:00</td>
+                                    <td><span class="pill pill--pending"><i class="fa-solid fa-clock" aria-hidden="true"></i> Pending</span></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="cell-person"><span class="cell-person__avatar" aria-hidden="true">MC</span><span><strong>Marco Chen</strong><span>#PT-10244</span></span></span></td>
+                                    <td>Dr. M. Hale</td>
+                                    <td>Emergency</td>
+                                    <td>11:45</td>
+                                    <td><span class="pill pill--critical"><i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i> Critical</span></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="cell-person"><span class="cell-person__avatar" aria-hidden="true">NK</span><span><strong>Nadia Khan</strong><span>#PT-10245</span></span></span></td>
+                                    <td>Dr. H. Kimura</td>
+                                    <td>Obstetrics</td>
+                                    <td>13:20</td>
+                                    <td><span class="pill pill--confirmed"><i class="fa-solid fa-check" aria-hidden="true"></i> Confirmed</span></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="cell-person"><span class="cell-person__avatar" aria-hidden="true">TB</span><span><strong>Thomas Boyd</strong><span>#PT-10246</span></span></span></td>
+                                    <td>Dr. O. Pierce</td>
+                                    <td>Radiology</td>
+                                    <td>14:05</td>
+                                    <td><span class="pill pill--cancelled"><i class="fa-solid fa-xmark" aria-hidden="true"></i> Cancelled</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <section class="panel" id="messages" aria-labelledby="messages-title">
+                    <div class="panel__head">
+                        <div>
+                            <h2 id="messages-title">Recent Messages</h2>
+                            <p>Patient enquiries</p>
+                        </div>
+                        <span class="pill pill--pending">6 new</span>
+                    </div>
+                    <div class="panel__body panel__body--flush">
+                        <ul class="list">
+                            <li class="list__item">
+                                <span class="list__icon" aria-hidden="true"><i class="fa-solid fa-envelope"></i></span>
+                                <span class="list__body">
+                                    <strong>Amelia Fontaine</strong>
+                                    <p>Question about cardiology consultation availability.</p>
+                                </span>
+                                <span class="list__meta">2m</span>
+                            </li>
+                            <li class="list__item">
+                                <span class="list__icon list__icon--navy" aria-hidden="true"><i class="fa-solid fa-envelope"></i></span>
+                                <span class="list__body">
+                                    <strong>Robert Lang</strong>
+                                    <p>Requesting imaging results follow-up.</p>
+                                </span>
+                                <span class="list__meta">18m</span>
+                            </li>
+                            <li class="list__item">
+                                <span class="list__icon list__icon--green" aria-hidden="true"><i class="fa-solid fa-envelope"></i></span>
+                                <span class="list__body">
+                                    <strong>Hannah Reid</strong>
+                                    <p>Thank you note for the maternity team.</p>
+                                </span>
+                                <span class="list__meta">1h</span>
+                            </li>
+                            <li class="list__item">
+                                <span class="list__icon list__icon--amber" aria-hidden="true"><i class="fa-solid fa-envelope"></i></span>
+                                <span class="list__body">
+                                    <strong>Omar Haddad</strong>
+                                    <p>Rescheduling a pediatric appointment.</p>
+                                </span>
+                                <span class="list__meta">3h</span>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+            </div>
+
+            <!-- ============ PATIENTS + DEPARTMENT OVERVIEW ============ -->
+            <div class="dash-grid">
+                <section class="panel" id="patients" aria-labelledby="patients-title">
+                    <div class="panel__head">
+                        <div>
+                            <h2 id="patients-title">Recent Patients</h2>
+                            <p>Latest registrations and admissions</p>
+                        </div>
+                        <a class="pill pill--active" href="#patients"><i class="fa-solid fa-list" aria-hidden="true"></i> View all</a>
+                    </div>
+                    <div class="panel__body panel__body--flush table-wrap">
+                        <table class="data">
+                            <caption class="visually-hidden">Recently registered patients</caption>
+                            <thead>
+                                <tr>
+                                    <th scope="col">Patient</th>
+                                    <th scope="col">Age</th>
+                                    <th scope="col">Department</th>
+                                    <th scope="col">Registered</th>
+                                    <th scope="col">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span class="cell-person"><span class="cell-person__avatar" aria-hidden="true">AF</span><span><strong>Amelia Fontaine</strong><span>#PT-10238</span></span></span></td>
+                                    <td>34</td>
+                                    <td>Cardiology</td>
+                                    <td>Today</td>
+                                    <td><span class="pill pill--active">Outpatient</span></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="cell-person"><span class="cell-person__avatar" aria-hidden="true">RL</span><span><strong>Robert Lang</strong><span>#PT-10237</span></span></span></td>
+                                    <td>57</td>
+                                    <td>Radiology</td>
+                                    <td>Today</td>
+                                    <td><span class="pill pill--pending">Awaiting</span></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="cell-person"><span class="cell-person__avatar" aria-hidden="true">HR</span><span><strong>Hannah Reid</strong><span>#PT-10236</span></span></span></td>
+                                    <td>29</td>
+                                    <td>Maternity</td>
+                                    <td>Yesterday</td>
+                                    <td><span class="pill pill--confirmed">Discharged</span></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="cell-person"><span class="cell-person__avatar" aria-hidden="true">OH</span><span><strong>Omar Haddad</strong><span>#PT-10235</span></span></span></td>
+                                    <td>41</td>
+                                    <td>Pediatrics</td>
+                                    <td>Yesterday</td>
+                                    <td><span class="pill pill--active">Outpatient</span></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="cell-person"><span class="cell-person__avatar" aria-hidden="true">LY</span><span><strong>Lena Yates</strong><span>#PT-10234</span></span></span></td>
+                                    <td>63</td>
+                                    <td>Intensive Care</td>
+                                    <td>2 days ago</td>
+                                    <td><span class="pill pill--critical">Monitored</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <section class="panel" id="departments" aria-labelledby="departments-title">
+                    <div class="panel__head">
+                        <div>
+                            <h2 id="departments-title">Department Overview</h2>
+                            <p>Capacity utilisation</p>
+                        </div>
+                        <span class="pill pill--active">30 total</span>
+                    </div>
+                    <div class="panel__body">
+                        <div class="progress-list">
+                            <div class="progress-item">
+                                <div class="progress-item__top"><strong>Emergency Medicine</strong><span>86%</span></div>
+                                <div class="progress"><div class="progress__bar" style="width:86%"></div></div>
+                            </div>
+                            <div class="progress-item">
+                                <div class="progress-item__top"><strong>Cardiology</strong><span>72%</span></div>
+                                <div class="progress"><div class="progress__bar progress__bar--navy" style="width:72%"></div></div>
+                            </div>
+                            <div class="progress-item">
+                                <div class="progress-item__top"><strong>Intensive Care</strong><span>64%</span></div>
+                                <div class="progress"><div class="progress__bar progress__bar--amber" style="width:64%"></div></div>
+                            </div>
+                            <div class="progress-item">
+                                <div class="progress-item__top"><strong>Pediatrics</strong><span>51%</span></div>
+                                <div class="progress"><div class="progress__bar progress__bar--green" style="width:51%"></div></div>
+                            </div>
+                            <div class="progress-item">
+                                <div class="progress-item__top"><strong>Radiology</strong><span>45%</span></div>
+                                <div class="progress"><div class="progress__bar progress__bar--navy" style="width:45%"></div></div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- ============ CREW + FACILITY OVERVIEW ============ -->
+            <div class="dash-grid dash-grid--even">
+                <section class="panel" id="crew" aria-labelledby="crew-title">
+                    <div class="panel__head">
+                        <div>
+                            <h2 id="crew-title">Crew Overview</h2>
+                            <p>Medical, nursing and support staff</p>
+                        </div>
+                        <a class="pill pill--active" href="crew.html"><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> View site</a>
+                    </div>
+                    <div class="panel__body">
+                        <div class="mini-stats">
+                            <div class="mini-stat"><i class="fa-solid fa-user-doctor" aria-hidden="true"></i><strong>84</strong><span>Physicians</span></div>
+                            <div class="mini-stat"><i class="fa-solid fa-user-nurse" aria-hidden="true"></i><strong>52</strong><span>Nursing Staff</span></div>
+                            <div class="mini-stat"><i class="fa-solid fa-microscope" aria-hidden="true"></i><strong>20</strong><span>Technical Staff</span></div>
+                        </div>
+                        <div class="chip-grid" style="margin-top:1rem">
+                            <div class="chip"><i class="fa-solid fa-user-doctor" aria-hidden="true"></i><span><strong>Dr. Amelia Carter</strong><span>Chief Cardiologist</span></span></div>
+                            <div class="chip"><i class="fa-solid fa-user-doctor" aria-hidden="true"></i><span><strong>Dr. Grace Bennett</strong><span>Chief Surgeon</span></span></div>
+                            <div class="chip"><i class="fa-solid fa-user-nurse" aria-hidden="true"></i><span><strong>Olivia Grant</strong><span>Head Nurse</span></span></div>
+                            <div class="chip"><i class="fa-solid fa-user-doctor" aria-hidden="true"></i><span><strong>Dr. Marcus Hale</strong><span>Emergency Physician</span></span></div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="panel" id="facilities" aria-labelledby="facilities-title">
+                    <div class="panel__head">
+                        <div>
+                            <h2 id="facilities-title">Facility Overview</h2>
+                            <p>Operational status</p>
+                        </div>
+                        <span class="pill pill--confirmed"><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Operational</span>
+                    </div>
+                    <div class="panel__body">
+                        <div class="chip-grid">
+                            <div class="chip"><i class="fa-solid fa-truck-medical" aria-hidden="true"></i><span><strong>Emergency Department</strong><span>Open &middot; 24/7</span></span></div>
+                            <div class="chip"><i class="fa-solid fa-syringe" aria-hidden="true"></i><span><strong>Operating Rooms</strong><span>6 of 8 in use</span></span></div>
+                            <div class="chip"><i class="fa-solid fa-bed-pulse" aria-hidden="true"></i><span><strong>Intensive Care</strong><span>64% capacity</span></span></div>
+                            <div class="chip"><i class="fa-solid fa-x-ray" aria-hidden="true"></i><span><strong>Imaging Center</strong><span>Open &middot; 07:00&ndash;22:00</span></span></div>
+                            <div class="chip"><i class="fa-solid fa-microscope" aria-hidden="true"></i><span><strong>Laboratory</strong><span>Open &middot; 24/7</span></span></div>
+                            <div class="chip"><i class="fa-solid fa-prescription-bottle-medical" aria-hidden="true"></i><span><strong>Pharmacy</strong><span>Open &middot; 08:00&ndash;20:00</span></span></div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="panel" id="doctors" aria-labelledby="doctors-title">
+                    <div class="panel__head">
+                        <div>
+                            <h2 id="doctors-title">Doctors on Duty</h2>
+                            <p>Currently rostered clinicians</p>
+                        </div>
+                        <span class="pill pill--confirmed"><i class="fa-solid fa-circle-check" aria-hidden="true"></i> 18 on shift</span>
+                    </div>
+                    <div class="panel__body panel__body--flush">
+                        <ul class="list">
+                            <li class="list__item">
+                                <span class="list__icon list__icon--navy" aria-hidden="true"><i class="fa-solid fa-user-doctor"></i></span>
+                                <span class="list__body">
+                                    <strong>Dr. Amelia Carter</strong>
+                                    <p>Chief Cardiologist &middot; Clinic A</p>
+                                </span>
+                                <span class="list__meta">09:00&ndash;17:00</span>
+                            </li>
+                            <li class="list__item">
+                                <span class="list__icon list__icon--navy" aria-hidden="true"><i class="fa-solid fa-user-doctor"></i></span>
+                                <span class="list__body">
+                                    <strong>Dr. Marcus Hale</strong>
+                                    <p>Emergency Physician &middot; ED</p>
+                                </span>
+                                <span class="list__meta">00:00&ndash;12:00</span>
+                            </li>
+                            <li class="list__item">
+                                <span class="list__icon list__icon--navy" aria-hidden="true"><i class="fa-solid fa-user-doctor"></i></span>
+                                <span class="list__body">
+                                    <strong>Dr. Grace Bennett</strong>
+                                    <p>Chief Surgeon &middot; Theatres 1&ndash;4</p>
+                                </span>
+                                <span class="list__meta">08:00&ndash;16:00</span>
+                            </li>
+                            <li class="list__item">
+                                <span class="list__icon list__icon--navy" aria-hidden="true"><i class="fa-solid fa-user-doctor"></i></span>
+                                <span class="list__body">
+                                    <strong>Dr. Elias Novak</strong>
+                                    <p>Consultant Pediatrician &middot; Ward 3</p>
+                                </span>
+                                <span class="list__meta">10:00&ndash;18:00</span>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+            </div>
+
+            <!-- ============ SERVICES / GALLERY / TESTIMONIALS ============= -->
+            <div class="dash-grid dash-grid--even">
+                <section class="panel" id="services" aria-labelledby="services-title">
+                    <div class="panel__head">
+                        <div>
+                            <h2 id="services-title">Services</h2>
+                            <p>Published medical services</p>
+                        </div>
+                        <span class="pill pill--active">10 active</span>
+                    </div>
+                    <div class="panel__body">
+                        <div class="mini-stats">
+                            <div class="mini-stat"><i class="fa-solid fa-stethoscope" aria-hidden="true"></i><strong>10</strong><span>Services</span></div>
+                            <div class="mini-stat"><i class="fa-solid fa-pen-to-square" aria-hidden="true"></i><strong>2</strong><span>Drafts</span></div>
+                            <div class="mini-stat"><i class="fa-solid fa-clock-rotate-left" aria-hidden="true"></i><strong>Today</strong><span>Last updated</span></div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="panel" id="gallery" aria-labelledby="gallery-title">
+                    <div class="panel__head">
+                        <div>
+                            <h2 id="gallery-title">Gallery</h2>
+                            <p>Media library</p>
+                        </div>
+                        <a class="pill pill--active" href="gallery.html"><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> View site</a>
+                    </div>
+                    <div class="panel__body">
+                        <div class="mini-stats">
+                            <div class="mini-stat"><i class="fa-solid fa-images" aria-hidden="true"></i><strong>36</strong><span>Images</span></div>
+                            <div class="mini-stat"><i class="fa-solid fa-layer-group" aria-hidden="true"></i><strong>12</strong><span>Albums</span></div>
+                            <div class="mini-stat"><i class="fa-solid fa-upload" aria-hidden="true"></i><strong>3</strong><span>Awaiting review</span></div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="panel" id="testimonials" aria-labelledby="testimonials-title">
+                    <div class="panel__head">
+                        <div>
+                            <h2 id="testimonials-title">Testimonials</h2>
+                            <p>Patient feedback</p>
+                        </div>
+                        <a class="pill pill--active" href="testimonials.html"><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> View site</a>
+                    </div>
+                    <div class="panel__body">
+                        <div class="mini-stats">
+                            <div class="mini-stat"><i class="fa-solid fa-quote-left" aria-hidden="true"></i><strong>48</strong><span>Published</span></div>
+                            <div class="mini-stat"><i class="fa-solid fa-star" aria-hidden="true"></i><strong>4.8</strong><span>Average rating</span></div>
+                            <div class="mini-stat"><i class="fa-solid fa-hourglass-half" aria-hidden="true"></i><strong>5</strong><span>Awaiting approval</span></div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- ============ SETTINGS ============ -->
+            <section class="panel" id="settings" aria-labelledby="settings-title">
+                <div class="panel__head">
+                    <div>
+                        <h2 id="settings-title">Website Settings</h2>
+                        <p>Hospital contact details and service information shown across the public site</p>
+                    </div>
+                    <span class="pill pill--pending"><i class="fa-solid fa-floppy-disk" aria-hidden="true"></i> Unsaved changes</span>
+                </div>
+                <div class="panel__body">
+                    <form class="admin-form" action="#" method="post" aria-label="Website settings">
+                        <div class="admin-field">
+                            <label for="set-name">Hospital Name</label>
+                            <input type="text" id="set-name" name="hospital-name" value="Band-Aid Medical Center">
+                        </div>
+                        <div class="admin-field">
+                            <label for="set-hotline">Emergency Hotline</label>
+                            <input type="tel" id="set-hotline" name="hotline" value="+1 (800) 555-CARE">
+                        </div>
+                        <div class="admin-field">
+                            <label for="set-email">Public Email</label>
+                            <input type="email" id="set-email" name="email" value="care@bandaidmedical.example">
+                        </div>
+                        <div class="admin-field">
+                            <label for="set-hours">General Service Hours</label>
+                            <input type="text" id="set-hours" name="hours" value="Monday – Friday, 8:00 AM – 6:00 PM">
+                        </div>
+                        <div class="admin-field admin-field--full">
+                            <label for="set-address">Address</label>
+                            <input type="text" id="set-address" name="address" value="100 Medical Center Drive, New York, NY 10001">
+                        </div>
+                        <div class="admin-field admin-field--full">
+                            <label for="set-about">About Summary</label>
+                            <textarea id="set-about" name="about">Band-Aid Medical Center provides comprehensive healthcare through experienced professionals, modern facilities, advanced medical technology and compassionate patient-centered care.</textarea>
+                        </div>
+                        <div class="admin-form__actions">
+                            <button class="btn-admin btn-admin--primary" type="submit"><i class="fa-solid fa-floppy-disk" aria-hidden="true"></i> Save Settings</button>
+                            <button class="btn-admin btn-admin--ghost" type="reset"><i class="fa-solid fa-rotate-left" aria-hidden="true"></i> Reset</button>
+                            <a class="btn-admin btn-admin--ghost" href="index.html"><i class="fa-solid fa-globe" aria-hidden="true"></i> View Public Site</a>
+                        </div>
+                    </form>
+                </div>
+            </section>
+
+            <!-- ============ ADMIN FOOTER ============ -->
+            <footer class="admin-footer">
+                <p>&copy; 2026 Band-Aid Medical Center &middot; Admin Dashboard (front-end prototype).</p>
+                <nav class="admin-footer__links" aria-label="Admin footer">
+                    <a href="index.html">Public Site</a>
+                    <a href="#dashboard">Back to Top</a>
+                    <a href="#settings">Settings</a>
+                </nav>
+            </footer>
+        </div>
+    </div>
+</div>
+</body>
+</html>
